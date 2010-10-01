@@ -1,0 +1,35 @@
+h1. About
+
+This counter simply counts characters in given textarea (or wherever). It's very simple and it doesn't require any stupid huge JS library, it's just plain JS.
+
+h1. Usage
+
+<pre>
+window.onload = function () {
+  var element = document.getElementById("twitter");
+  var showDiv = document.getElementById("counter");
+  var button  = document.getElementById("submit-button");
+  var counter = new TwitterCounter(element, showDiv);
+  counter.update();
+  element.onkeyup = function () {
+    counter.update();
+    button.disabled = counter.lengthExceeded();
+  };
+};
+</pre>
+
+<pre>
+&lt;p&gt;
+  Remaining characters: &lt;span id=&#x27;counter&#x27;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+  &lt;div&gt;
+    &lt;textarea id=&#x27;twitter&#x27;&gt;I&#x27;m the default text.&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button id=&quot;submit-button&quot; type=&quot;submit&quot;&gt;Send!&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+h1. License
+
+Do whatever you want with the code, but with NO warranty!

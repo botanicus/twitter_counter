@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" charset="utf-8" src="twitter_counter.js">
+    </script>
+    <script type="text/javascript" charset="utf-8">
+      window.onload = function () {
+        var element = document.getElementById("twitter");
+        var showDiv = document.getElementById("counter");
+        var button  = document.getElementById("submit-button");
+        var counter = new TwitterCounter(element, showDiv);
+        counter.update();
+        element.onkeyup = function () {
+          counter.update();
+          button.disabled = counter.lengthExceeded();
+        };
+      };
+    </script>
+
+    <style type="text/css" media="screen">
+      .max-length-exceeded { color: red; }
+    </style>
+  </head>
+  <body>
+    <p>
+      Remaining characters: <span id='counter'></span>
+    </p>
+    <form action="#" method="post">
+      <div>
+        <textarea id='twitter'>I'm the default text.</textarea>
+      </div>
+      <button id="submit-button" type="submit">Send!</button>
+    </form>
+  </body>
+</html>
